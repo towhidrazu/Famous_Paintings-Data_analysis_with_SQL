@@ -9,3 +9,11 @@ Answering several questions using SQL queries from Paintaings data
 In this project, under the folder of 'datasets' we have 8 numbers of CSV files. We have to import those CSV files into our postgreSQL. To do that easily we will use python programming language. We will use 'pandas' and 'sqlalchemy' library of python. Pandas is a very popular python library used for working with data sets. It has functions for analyzing, cleaning, exploring, and manipulating data. SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL. 
 
 To install pandas and sqlalchemy in our project area at windows pc, procedures are followd shown in this YouTube video: https://youtu.be/6WW7J7Hhw8c?si=Gj7W-OTMRtQsXV2X
+
+Then we will create a database in postgreSQL named 'paintaings' where we will load our CSV files.
+
+Now on Visual Studio code we will run the following codes to create 8 new tables from 8 CSV files under paintaings database.
+
+```
+
+```
