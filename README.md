@@ -5,3 +5,7 @@ Answering several questions using SQL queries from Paintaings data
 
 
 **Dataset is taken from this link: https://www.kaggle.com/datasets/mexwell/famous-paintings**
+
+In this project, under the folder of 'datasets' we have 8 numbers of CSV files. We have to import those CSV files into our postgreSQL. To do that easily we will use python programming language. We will use pandas, a very popular python library used for working with data sets. It has functions for analyzing, cleaning, exploring, and manipulating data.
+
+To install pandas in our project area at windows pc procedures are followd shown in this YouTube video: https://youtu.be/6WW7J7Hhw8c?si=Gj7W-OTMRtQsXV2X
