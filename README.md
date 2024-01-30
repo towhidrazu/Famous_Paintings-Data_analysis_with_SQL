@@ -40,3 +40,6 @@ for file in files:
     df = pd.read_csv(f'F:\paintaings\Dataset\{file}.csv')
     df.to_sql(file, con=conn, if_exists='replace', index=False)
 ```
+
+Now all 8 CSV files are loaded into our paintaings database of PostgreSQL and ready to be used with SQL queries.
+
