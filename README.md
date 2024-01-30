@@ -1,5 +1,4 @@
 ![horse](https://github.com/towhidrazu/Famous_Paintings-Data_analysis_with_SQL/blob/main/horse_and_boats.jpg)
-
 # Famous_Paintings-Data_analysis_with_SQL
 ## Answering several questions using SQL queries from Paintaings data
 
