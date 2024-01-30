@@ -24,8 +24,19 @@ pip install psycopg2
 
 Then we will create a database in postgreSQL named 'paintaings' where we will load our CSV files.
 
-Now on Visual Studio code we will run the following codes to create 8 new tables from 8 CSV files under paintaings database.
+Now on Visual Studio code we will run the following codes to create 8 new tables with all their data from 8 CSV files under paintaings database.
 
 ```
+import pandas as pandas
+from sqlalchemy import create_engine
 
+conn_string = 'postgresql://postgres:password@localhost/paintings'
+db = create_engine(conn_string)
+conn = db.connect()
+
+files = ['artist', 'canvas_size', 'image_link', 'museum_hours', 'museum', 'product_size', 'subject', 'work']
+
+for file in files:
+    df = pd.read_csv(f'F:\paintaings\Dataset\{file}.csv')
+    df.to_sql(file, con=conn, if_exists='replace', index=False)
 ```
