@@ -44,3 +44,11 @@ for file in files:
 
 Now all 8 CSV files are loaded into our paintaings database of PostgreSQL and ready to be used with SQL queries.
 
+**1) Fetch all the paintings which are not displayed on any museums?**
+```
+SELECT * 
+FROM work
+WHERE museum_id IS null
+```
+
+
