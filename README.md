@@ -53,6 +53,18 @@ WHERE museum_id IS null
 
 **2) Are there museuems without any paintings?**
 ```
+#solution 1
+SELECT *
+FROM museum m
+WHERE museum_id NOT IN (SELECT museum_id 
+						FROM work w 
+						WHERE m.museum_id = w.museum_id)
+#solution 2
+SELECT *
+FROM museum m
+WHERE NOT EXISTS (SELECT museum_id 
+						FROM work w 
+						WHERE m.museum_id = w.museum_id)
 ```
 
 **3) How many paintings have an asking price of more than their regular price?**
