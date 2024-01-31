@@ -89,6 +89,12 @@ WHERE sale_price < regular_price / 2
 
 **5) Which canva size costs the most?**
 ```
+SELECT c.label AS Canva, p.sale_price
+FROM product_size AS p
+JOIN canvas_size AS c
+ON p.size_id = c.size_id::text
+ORDER BY p.sale_price DESC
+LIMIT 1
 ```
 
 **6) Delete duplicate records from work, product_size, subject and image_link tables.**
