@@ -69,6 +69,15 @@ WHERE NOT EXISTS (SELECT museum_id
 
 **3) How many paintings have an asking price of more than their regular price?**
 ```
+#solution 1
+SELECT COUNT(*) AS No_of_paintaings
+FROM product_size
+WHERE sale_price > regular_price
+
+#solution 2
+SELECT COUNT(*) AS No_of_paintaings
+FROM product_size
+WHERE (sale_price - regular_price) > '0'
 ```
 
 **4) Identify the paintings whose asking price is less than 50% of its regular price.**
