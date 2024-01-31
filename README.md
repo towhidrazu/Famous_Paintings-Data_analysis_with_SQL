@@ -82,6 +82,9 @@ WHERE (sale_price - regular_price) > '0'
 
 **4) Identify the paintings whose asking price is less than 50% of its regular price.**
 ```
+SELECT * 
+FROM product_size
+WHERE sale_price < regular_price / 2
 ```
 
 **5) Which canva size costs the most?**
