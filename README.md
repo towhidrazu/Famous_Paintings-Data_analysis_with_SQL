@@ -106,9 +106,9 @@ LIMIT 1
 SELECT *
 FROM museum
 WHERE city ~'[0-9]'
+```
 
----
-Explanation from ChatGPT
+**Note: Explanation from ChatGPT**
 In PostgreSQL, the tilde (~) is used as a match operator for regular expressions in queries. Let's break down the two regular expressions you provided:
 
 1. `~'^[0-9]'`: This regular expression matches strings that start with a digit (0-9). The caret (^) is an anchor that asserts the start of the string, and `[0-9]` specifies a character class that includes any digit from 0 to 9.
@@ -121,9 +121,9 @@ Here's a brief summary:
 - `~'[0-9]'`: Matches strings that contain at least one digit.
 
 In summary, the difference lies in the positioning of the digit within the string. The first one specifies that the digit must be at the beginning of the string, while the second one only requires the presence of a digit anywhere in the string.
----
 
-```
+
+
 
 **8) Museum_Hours table has 1 invalid entry. Identify it and remove it.**
 ```
