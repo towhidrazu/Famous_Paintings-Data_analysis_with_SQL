@@ -153,6 +153,15 @@ LIMIT 10
 
 **12) Which are the top 5 most popular museum? (Popularity is defined based on most no of paintings in a museum)**
 ```
+WITH temp AS(SELECT m.name, m.city, m.country, w.museum_id
+FROM work w
+JOIN museum m
+ON w.museum_id = m.museum_id)
+SELECT name, museum_id, city, country, COUNT(museum_id) AS no_of_paintaings
+FROM temp
+GROUP BY name, city, country, museum_id
+ORDER BY COUNT(museum_id) DESC
+LIMIT 5
 ```
 
 **13) Who are the top 5 most popular artist? (Popularity is defined based on most no of paintings done by an artist)**
