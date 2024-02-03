@@ -131,6 +131,7 @@ In summary, the difference lies in the positioning of the digit within the strin
 
 **9) Fetch the top 10 most famous painting subject.**
 ```
+#Solution 1
 WITH temp AS(SELECT s.*, w.*
 FROM subject s
 RIGHT JOIN work w
@@ -141,6 +142,16 @@ FROM temp
 GROUP BY subject
 ORDER BY COUNT(subject) DESC
 LIMIT 10
+
+#Solution 2
+select * 
+	from (
+		select s.subject,count(1) as no_of_paintings
+		,rank() over(order by count(1) desc) as ranking
+		from work w
+		join subject s on s.work_id=w.work_id
+		group by s.subject ) x
+	where ranking <= 10
 ```
 
 **10) Identify the museums which are open on both Sunday and Monday. Display museum name, city.**
