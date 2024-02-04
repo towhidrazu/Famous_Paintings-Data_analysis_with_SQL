@@ -244,6 +244,19 @@ select museum_name,state as city,day, open, close, duration
 
 **20) Which country has the 5th highest no of paintings?**
 ```
+SELECT *
+FROM (
+	SELECT *, RANK() OVER(ORDER BY no_of_paintaings DESC) 
+	FROM (
+		SELECT m.country, COUNT(m.country) no_of_paintaings
+		FROM work w
+		LEFT JOIN museum m
+		ON w.museum_id = m.museum_id
+		GROUP BY m.country
+		)pretemp
+	) temp
+WHERE rank = 5
+
 ```
 
 **21) Which are the 3 most popular and 3 least popular painting styles?**
