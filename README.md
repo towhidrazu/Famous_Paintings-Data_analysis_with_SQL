@@ -244,16 +244,13 @@ select museum_name,state as city,day, open, close, duration
 
 **20) Which country has the 5th highest no of paintings?**
 ```
-SELECT *
+SELECT country, no_of_paintaings
 FROM (
-	SELECT *, RANK() OVER(ORDER BY no_of_paintaings DESC) 
-	FROM (
-		SELECT m.country, COUNT(m.country) no_of_paintaings
-		FROM work w
-		LEFT JOIN museum m
-		ON w.museum_id = m.museum_id
-		GROUP BY m.country
-		)pretemp
+	SELECT m.country, COUNT(1) no_of_paintaings, RANK() OVER(ORDER BY COUNT(1) DESC)
+	FROM work w
+	JOIN museum m
+	ON w.museum_id = m.museum_id
+	GROUP BY m.country
 	) temp
 WHERE rank = 5
 
