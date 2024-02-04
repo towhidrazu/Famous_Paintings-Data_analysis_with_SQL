@@ -262,4 +262,16 @@ WHERE rank = 5
 
 **22) Which artist has the most no of Portraits paintings outside USA?. Display artist name, no of paintings and the artist nationality.**
 ```
+SELECT full_name AS artist_name, nationality, no_of_paintaings
+FROM (
+	SELECT a.full_name, a.nationality, COUNT(1) AS no_of_paintaings, RANK () OVER (ORDER BY COUNT(1) DESC)
+	FROM work w
+	JOIN artist a ON a.artist_id = w.artist_id
+	JOIN subject s ON s.work_id = w.work_id
+	JOIN museum m ON m.museum_id = w.museum_id
+	WHERE m.country != 'USA' AND
+	s.subject = 'Portraits'
+	GROUP BY a.full_name, a.nationality
+	) sub
+WHERE rank = 1
 ```
