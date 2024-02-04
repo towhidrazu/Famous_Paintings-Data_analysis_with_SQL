@@ -195,7 +195,7 @@ LIMIT 5
 
 **13) Who are the top 5 most popular artist? (Popularity is defined based on most no of paintings done by an artist)**
 ```
-SELECT full_name, no_of_paintaings, rank
+SELECT full_name AS artist_name, no_of_paintaings, rank
 FROM(
 	SELECT a.full_name, COUNT(1) no_of_paintaings, RANK() OVER(ORDER BY COUNT(1) DESC)
 	FROM artist a
@@ -204,6 +204,7 @@ FROM(
 	GROUP BY a.full_name
 	) sub
 WHERE rank <= 5
+
 ```
 
 **14) Display the 3 least popular canva sizes**
