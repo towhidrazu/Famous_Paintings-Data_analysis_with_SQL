@@ -209,6 +209,15 @@ WHERE rank <= 5
 
 **14) Display the 3 least popular canva sizes**
 ```
+SELECT label, no_of_paintaings, ranking
+FROM(
+	SELECT c.label, COUNT(1) AS no_of_paintaings, DENSE_RANK() OVER(ORDER BY COUNT(1)) AS ranking
+	FROM canvas_size c
+	JOIN product_size p ON c.size_id::text = p.size_id
+	JOIN work w ON w.work_id = p.work_id
+	GROUP BY c.label
+	) sub
+WHERE ranking <=3
 ```
 
 **15) Which museum is open for the longest during a day. Dispay museum name, state and hours open and which day?**
