@@ -171,6 +171,13 @@ AND EXISTS (
 
 **11) How many museums are open every single day?**
 ```
+SELECT COUNT(museum_id) no_of_museums
+FROM (
+	SELECT museum_id, COUNT(museum_id)
+	FROM museum_hours
+	GROUP BY museum_id
+	HAVING COUNT(museum_id) = 7
+	) Sub
 ```
 
 **12) Which are the top 5 most popular museum? (Popularity is defined based on most no of paintings in a museum)**
