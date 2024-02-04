@@ -161,10 +161,12 @@ FROM museum_hours mh1
 JOIN museum m
 ON mh1.museum_id = m.museum_id
 WHERE day = 'Sunday' 
-AND EXISTS (SELECT 1
-			FROM museum_hours mh2
-			WHERE mh1.museum_id = mh2.museum_id
-			AND day = 'Monday')
+AND EXISTS (
+	SELECT 1
+	FROM museum_hours mh2
+	WHERE mh1.museum_id = mh2.museum_id
+	AND day = 'Monday'
+		)
 ```
 
 **11) How many museums are open every single day?**
