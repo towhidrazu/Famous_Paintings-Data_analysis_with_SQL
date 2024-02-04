@@ -203,6 +203,7 @@ LIMIT 5
 
 **15) Which museum is open for the longest during a day. Dispay museum name, state and hours open and which day?**
 ```
+#Solution 1
 SELECT m.name, m.state, mh.day, mh.open, mh.close, mh.duration
 FROM(
 	SELECT *, TO_TIMESTAMP(close, 'HH:MI AM') - TO_TIMESTAMP(open,'HH:MI PM') AS duration
@@ -211,6 +212,18 @@ FROM(
 	LIMIT 1) mh
 JOIN museum m
 ON m.museum_id = mh.museum_id
+
+#Solution 2
+select museum_name,state as city,day, open, close, duration
+	from (	select m.name as museum_name, m.state, day, open, close
+			, to_timestamp(open,'HH:MI AM') 
+			, to_timestamp(close,'HH:MI PM') 
+			, to_timestamp(close,'HH:MI PM') - to_timestamp(open,'HH:MI AM') as duration
+			, rank() over (order by (to_timestamp(close,'HH:MI PM') - to_timestamp(open,'HH:MI AM')) desc) as rnk
+			from museum_hours mh
+		 	join museum m on m.museum_id=mh.museum_id) x
+	where x.rnk=1;
+
 ```
 
 **16) Which museum has the most no of most popular painting style?**
