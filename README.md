@@ -255,6 +255,19 @@ select museum_name,state as city,day, open, close, duration
 
 **18) Display the country and the city with most no of museums. Output 2 seperate columns to mention the city and country. If there are multiple value, seperate them with comma.**
 ```
+WITH CTE_COUNTRY AS
+		(SELECT country, COUNT(1), RANK() OVER(ORDER BY COUNT(1) DESC)
+		FROM museum
+		GROUP BY country),
+	 CTE_CITY AS
+	 	(SELECT city, COUNT(1), RANK() OVER(ORDER BY COUNT(1) DESC)
+		FROM museum
+		GROUP BY city)
+SELECT STRING_AGG(DISTINCT country, ', ') AS country, STRING_AGG(city, ', ') AS city
+FROM CTE_COUNTRY
+CROSS JOIN CTE_CITY
+WHERE CTE_COUNTRY.rank=1
+AND CTE_CITY.rank = 1
 ```
 
 **19) Identify the artist and the museum where the most expensive and least expensive painting is placed. Display the artist name, sale_price, painting name, museum name, museum city and canvas label.**
