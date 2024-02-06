@@ -66,6 +66,7 @@ WHERE NOT EXISTS (SELECT museum_id
 		FROM work w 
 		WHERE m.museum_id = w.museum_id)
 ```
+***Features and/(or) clauses involved: Subquery***
 
 **3) How many paintings have an asking price of more than their regular price?**
 ```
@@ -96,6 +97,8 @@ ON p.size_id = c.size_id::text
 ORDER BY p.sale_price DESC
 LIMIT 1
 ```
+***Features and/(or) clauses involved: JOIN, LIMIT***
+
 
 **6) Delete duplicate records from work, product_size, subject and image_link tables.**
 ```
@@ -297,6 +300,7 @@ FROM (
 WHERE rank = 5
 
 ```
+***Features and/(or) clauses involved: ***
 
 **21) Which are the 3 most popular and 3 least popular painting styles?**
 ```
@@ -317,3 +321,4 @@ FROM (
 	) sub
 WHERE rank = 1
 ```
+***Features and/(or) clauses involved: Subquery, RANK window function, Join 3 tables***
