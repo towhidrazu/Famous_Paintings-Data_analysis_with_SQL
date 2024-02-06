@@ -51,6 +51,9 @@ FROM work
 WHERE museum_id IS null
 ```
 
+<br>
+<br>
+
 **2) Are there museuems without any paintings?**
 ```
 #solution 1
@@ -84,12 +87,18 @@ FROM product_size
 WHERE (sale_price - regular_price) > '0'
 ```
 
+<br>
+<br>
+
 **4) Identify the paintings whose asking price is less than 50% of its regular price.**
 ```
 SELECT * 
 FROM product_size
 WHERE sale_price < regular_price / 2
 ```
+
+<br>
+<br>
 
 **5) Which canva size costs the most?**
 ```
@@ -108,6 +117,9 @@ LIMIT 1
 **6) Delete duplicate records from work, product_size, subject and image_link tables.**
 ```
 ```
+
+<br>
+<br>
 
 **7) Identify the museums with invalid city information in the given dataset.**
 ```
@@ -133,12 +145,15 @@ Here's a brief summary:
 
 In summary, the difference lies in the positioning of the digit within the string. The first one specifies that the digit must be at the beginning of the string, while the second one only requires the presence of a digit anywhere in the string.
 
-
-
+<br>
+<br>
 
 **8) Museum_Hours table has 1 invalid entry. Identify it and remove it.**
 ```
 ```
+
+<br>
+<br>
 
 **9) Fetch the top 10 most famous painting subject.**
 ```
@@ -199,6 +214,9 @@ FROM (
 	) Sub
 ```
 
+<br>
+<br>
+
 **12) Which are the top 5 most popular museum? (Popularity is defined based on most no of paintings in a museum)**
 ```
 WITH temp AS(SELECT m.name, m.city, m.country, w.museum_id
@@ -211,6 +229,9 @@ GROUP BY name, city, country, museum_id
 ORDER BY COUNT(museum_id) DESC
 LIMIT 5
 ```
+
+<br>
+<br>
 
 **13) Who are the top 5 most popular artist? (Popularity is defined based on most no of paintings done by an artist)**
 ```
@@ -278,6 +299,9 @@ select museum_name,state as city,day, open, close, duration
 ```
 ```
 
+<br>
+<br>
+
 **17) Identify the artists whose paintings are displayed in multiple countries.**
 ```
 WITH cte AS
@@ -321,6 +345,9 @@ AND CTE_CITY.rank = 1
 ```
 ```
 
+<br>
+<br>
+
 **20) Which country has the 5th highest no of paintings?**
 ```
 SELECT country, no_of_paintaings
@@ -342,6 +369,9 @@ WHERE rank = 5
 **21) Which are the 3 most popular and 3 least popular painting styles?**
 ```
 ```
+
+<br>
+<br>
 
 **22) Which artist has the most no of Portraits paintings outside USA?. Display artist name, no of paintings and the artist nationality.**
 ```
