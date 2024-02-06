@@ -69,7 +69,7 @@ WHERE NOT EXISTS (SELECT museum_id
 ***Features and/(or) clauses involved: Subquery***
 
 <br>
-
+<br>
 
 
 
