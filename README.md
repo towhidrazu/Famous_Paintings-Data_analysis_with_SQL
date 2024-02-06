@@ -110,6 +110,7 @@ SELECT *
 FROM museum
 WHERE city ~'[0-9]'
 ```
+***Features and/(or) clauses involved: Regular expression***
 
 **Note: Explanation from ChatGPT**
 In PostgreSQL, the tilde (~) is used as a match operator for regular expressions in queries. Let's break down the two regular expressions you provided:
@@ -156,6 +157,7 @@ select *
 		group by s.subject ) x
 	where ranking <= 10
 ```
+***Features and/(or) clauses involved: Common table expression (CTE)***
 
 **10) Identify the museums which are open on both Sunday and Monday. Display museum name, city.**
 ```
@@ -171,6 +173,8 @@ AND EXISTS (
 	AND day = 'Monday'
 		)
 ```
+***Features and/(or) clauses involved: Looking from 2 conditions from same column***
+
 
 **11) How many museums are open every single day?**
 ```
@@ -207,8 +211,9 @@ FROM(
 	GROUP BY a.full_name
 	) sub
 WHERE rank <= 5
-
 ```
+***Features and/(or) clauses involved: Subquery, RANK window function***
+
 
 **14) Display the 3 least popular canva sizes**
 ```
@@ -222,6 +227,8 @@ FROM(
 	) sub
 WHERE ranking <=3
 ```
+***Features and/(or) clauses involved: DENSE_RANK window function, Join 3 tables***
+
 
 **15) Which museum is open for the longest during a day. Dispay museum name, state and hours open and which day?**
 ```
@@ -245,8 +252,10 @@ select museum_name,state as city,day, open, close, duration
 			from museum_hours mh
 		 	join museum m on m.museum_id=mh.museum_id) x
 	where x.rnk=1;
-
 ```
+***Features and/(or) clauses involved: Convert TEXT value TO_TIMESTAMP and take only hour values from there***
+
+
 
 **16) Which museum has the most no of most popular painting style?**
 ```
@@ -265,6 +274,8 @@ GROUP BY full_name
 HAVING COUNT(DISTINCT country) > 1
 ORDER BY 2 DESC, 1
 ```
+***Features and/(or) clauses involved: DISTINCT, ORDER BY 2 columns***
+
 
 **18) Display the country and the city with most no of museums. Output 2 seperate columns to mention the city and country. If there are multiple value, seperate them with comma.**
 ```
@@ -282,6 +293,8 @@ CROSS JOIN CTE_CITY
 WHERE CTE_COUNTRY.rank=1
 AND CTE_CITY.rank = 1
 ```
+***Features and/(or) clauses involved: Multiple CTEs, String agreegation, DISTINCT, CROSSS JOIN***
+
 
 **19) Identify the artist and the museum where the most expensive and least expensive painting is placed. Display the artist name, sale_price, painting name, museum name, museum city and canvas label.**
 ```
@@ -300,7 +313,7 @@ FROM (
 WHERE rank = 5
 
 ```
-***Features and/(or) clauses involved: ***
+***Features and/(or) clauses involved: Subquery, RANK window function***
 
 **21) Which are the 3 most popular and 3 least popular painting styles?**
 ```
