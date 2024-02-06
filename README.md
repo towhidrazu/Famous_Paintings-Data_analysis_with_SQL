@@ -68,6 +68,7 @@ WHERE NOT EXISTS (SELECT museum_id
 ```
 ***Features and/(or) clauses involved: Subquery***
 
+<br>
 
 **3) How many paintings have an asking price of more than their regular price?**
 ```
