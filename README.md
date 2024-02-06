@@ -70,6 +70,10 @@ WHERE NOT EXISTS (SELECT museum_id
 
 <br>
 
+
+
+
+
 **3) How many paintings have an asking price of more than their regular price?**
 ```
 #solution 1
