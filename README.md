@@ -251,6 +251,16 @@ select museum_name,state as city,day, open, close, duration
 
 **17) Identify the artists whose paintings are displayed in multiple countries.**
 ```
+WITH cte AS
+		(SELECT a.full_name, w.work_id, w.name, m.country
+		FROM work w
+		JOIN artist a ON w.artist_id = a.artist_id
+		JOIN museum m ON w.museum_id = m.museum_id)
+SELECT full_name AS name_of_artist, COUNT(DISTINCT country) AS no_of_countries
+FROM cte
+GROUP BY full_name
+HAVING COUNT(DISTINCT country) > 1
+ORDER BY 2 DESC, 1
 ```
 
 **18) Display the country and the city with most no of museums. Output 2 seperate columns to mention the city and country. If there are multiple value, seperate them with comma.**
