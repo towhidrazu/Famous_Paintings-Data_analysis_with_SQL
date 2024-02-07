@@ -297,7 +297,22 @@ select museum_name,state as city,day, open, close, duration
 
 **16) Which museum has the most no of most popular painting style?**
 ```
+SELECT m.name AS museum_name, temp.style, COUNT(temp.museum_id) AS no_of_paintaings
+FROM
+	(SELECT * FROM work WHERE style =
+		(SELECT style
+		FROM work
+		GROUP BY 1
+		ORDER BY COUNT(1) DESC
+		LIMIT 1)
+	 ) temp
+JOIN museum m ON temp.museum_id = m.museum_id
+WHERE temp.museum_id IS NOT null
+GROUP BY m.name, temp.style
+ORDER BY COUNT(temp.museum_id) DESC
+LIMIT 1
 ```
+***Features and/(or) clauses involved: 2nd degree subquery (subquery inside a subquery)***
 
 <br>
 <br>
