@@ -358,7 +358,8 @@ AND CTE_CITY.rank = 1
 
 **19) Identify the artist and the museum where the most expensive and least expensive painting is placed. Display the artist name, sale_price, painting name, museum name, museum city and canvas label.**
 ```
-SELECT a.full_name AS artist_name, sub.sale_price, w.name AS paintaing_name, m.name AS museum_name, m.city AS museum_city , c.label AS canvas_label
+SELECT a.full_name AS artist_name, sub.sale_price, w.name AS paintaing_name, m.name AS museum_name, m.city AS museum_city ,
+	 c.label AS canvas_label
 FROM 
 	(SELECT * , RANK() OVER(ORDER BY sale_price) AS cheap, RANK() OVER(ORDER BY sale_price DESC) AS expensive
 	FROM product_size) AS sub
