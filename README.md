@@ -366,10 +366,10 @@ FROM
 JOIN work w ON w.work_id = sub.work_id
 JOIN artist a ON a.artist_id = w.artist_id
 JOIN museum m ON m.museum_id = w.museum_id
-JOIN canvas_size c ON c.size_id::TEXT = sub.size_id
+JOIN canvas_size c ON c.size_id = sub.size_id::NUMERIC
 WHERE sub.cheap = 1 OR sub.expensive= 1
 ```
-***Features and/(or) clauses involved: Converting data type to TEXT in JOIN ON clause to match data type of other table. Referencing a 3rd table for JOIN clause***
+***Features and/(or) clauses involved: Converting data type to NUMERIC (as it is TEXT type in table) in JOIN ON clause to match data type (NUMERIC) of other table. Referencing a 3rd table for JOIN clause***
 <br>
 <br>
 
