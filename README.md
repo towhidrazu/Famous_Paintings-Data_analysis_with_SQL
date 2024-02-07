@@ -109,7 +109,7 @@ ON p.size_id = c.size_id::text
 ORDER BY p.sale_price DESC
 LIMIT 1
 ```
-***Features and/(or) clauses involved: JOIN, LIMIT***
+***Features and/(or) clauses involved: JOIN, LIMIT, Converting data type to TEXT (as it is NUMERIC type in table) in JOIN ON clause to match data type (TEXT) of other table.***
 
 <br>
 <br>
