@@ -393,9 +393,19 @@ WHERE rank = 5
 
 **21) Which are the 3 most popular and 3 least popular painting styles?**
 ```
-
+SELECT style, CASE 
+		WHEN rnk <= 3 THEN 'most popular'
+		ELSE 'least expensive'
+	END AS popularity
+FROM 
+	(SELECT style, COUNT(1), RANK() OVER(ORDER BY COUNT(1) DESC) rnk, COUNT(1) OVER() no_of_records  
+	FROM work
+	WHERE style IS NOT null
+	GROUP BY style) sub
+WHERE rnk <= 3 OR
+	  rnk > no_of_records - 3
 ```
-***Features and/(or) clauses involved: CASE statement***
+***Features and/(or) clauses involved: CASE statement, COUNT as window function***
 <br>
 <br>
 
