@@ -358,8 +358,17 @@ AND CTE_CITY.rank = 1
 
 **19) Identify the artist and the museum where the most expensive and least expensive painting is placed. Display the artist name, sale_price, painting name, museum name, museum city and canvas label.**
 ```
+SELECT a.full_name AS artist_name, sub.sale_price, w.name AS paintaing_name, m.name AS museum_name, m.city AS museum_city , c.label AS canvas_label
+FROM 
+	(SELECT * , RANK() OVER(ORDER BY sale_price) AS cheap, RANK() OVER(ORDER BY sale_price DESC) AS expensive
+	FROM product_size) AS sub
+JOIN work w ON w.work_id = sub.work_id
+JOIN artist a ON a.artist_id = w.artist_id
+JOIN museum m ON m.museum_id = w.museum_id
+JOIN canvas_size c ON c.size_id::TEXT = sub.size_id
+WHERE sub.cheap = 1 OR sub.expensive= 1
 ```
-
+***Features and/(or) clauses involved: Converting data type to TEXT in JOIN ON clause to match data type of other table. Referencing a 3rd table for JOIN clause***
 <br>
 <br>
 
