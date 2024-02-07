@@ -393,8 +393,9 @@ WHERE rank = 5
 
 **21) Which are the 3 most popular and 3 least popular painting styles?**
 ```
-```
 
+```
+***Features and/(or) clauses involved: CASE statement***
 <br>
 <br>
 
