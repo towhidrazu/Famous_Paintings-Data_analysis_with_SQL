@@ -118,6 +118,34 @@ LIMIT 1
 
 We will solve this problem using a 'CTID', a default postgreSQL feature. Also this types of problem can be sloved following several steps of procedure which we will discuss on probem no.8
 ```
+
+--Deleting duplicate records from work
+DELETE FROM work
+WHERE CTID NOT IN
+		(SELECT MIN(CTID)
+		FROM work
+		GROUP BY work_id, name, artist_id, style, museum_id)
+
+--Deleting duplicate records from product_size
+DELETE FROM product_size
+WHERE CTID NOT IN
+		(SELECT MIN(CTID)
+		FROM product_size
+		GROUP BY work_id, size_id, sale_price, regular_price)
+
+--Deleting duplicate records from subject
+DELETE FROM subject
+WHERE CTID NOT IN
+		(SELECT MIN(CTID)
+		FROM subject
+		GROUP BY work_id, subject)
+				
+--Deleting duplicate records from image_link
+DELETE FROM image_link
+WHERE CTID NOT IN
+		(SELECT MIN(CTID)
+		FROM image_link
+		GROUP BY work_id, url)
 ```
 ***Features and/(or) clauses involved: CTID, a default postgreSQL feature.***
 
