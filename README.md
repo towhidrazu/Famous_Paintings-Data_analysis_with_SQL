@@ -166,9 +166,9 @@ WHERE CTID NOT IN
 
 DELETE FROM museum_hours
 WHERE CTID NOT IN
-				(SELECT MIN(CTID) 
-				FROM museum_hours
-				GROUP BY museum_id, day, open, close)
+		(SELECT MIN(CTID) 
+		FROM museum_hours
+		GROUP BY museum_id, day, open, close)
 
 --Solution 2 (Using multi-steps)
 
