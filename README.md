@@ -115,6 +115,7 @@ LIMIT 1
 <br>
 
 **6) Delete duplicate records from work, product_size, subject and image_link tables.**
+
 We will solve this problem using a 'CTID', a default postgreSQL feature. Also this types of problem can be sloved following several steps of procedure which we will discuss on probem no.8
 ```
 ```
