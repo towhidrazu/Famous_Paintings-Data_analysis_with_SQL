@@ -162,6 +162,17 @@ WHERE CTID NOT IN
 		GROUP BY museum_id, day, open, close)
 
 # Removing invalid entry.
+--Solution 1 (Using CTID)
+
+DELETE FROM museum_hours
+WHERE CTID NOT IN
+				(SELECT MIN(CTID) 
+				FROM museum_hours
+				GROUP BY museum_id, day, open, close)
+
+--Solution 2 (Using multi-steps)
+
+
 ```
 ***Features and/(or) clauses involved: CTID, a default postgreSQL feature.***
 <br>
