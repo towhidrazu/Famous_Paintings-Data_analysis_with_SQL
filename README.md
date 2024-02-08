@@ -154,7 +154,12 @@ In summary, the difference lies in the positioning of the digit within the strin
 **8) Museum_Hours table has 1 invalid entry. Identify it and remove it.**
 ```
 # Identifying invalid entry.
-
+SELECT *
+FROM museum_hours
+WHERE CTID NOT IN
+		(SELECT MIN(CTID) 
+		FROM museum_hours
+		GROUP BY museum_id, day, open, close)
 
 # Removing invalid entry.
 ```
