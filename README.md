@@ -115,8 +115,10 @@ LIMIT 1
 <br>
 
 **6) Delete duplicate records from work, product_size, subject and image_link tables.**
+We will solve this problem using a 'CTID', a default postgreSQL feature. Also this types of problem can be sloved following several steps of procedure which we will discuss on probem no.8
 ```
 ```
+***Features and/(or) clauses involved: CTID, a default postgreSQL feature.***
 
 <br>
 <br>
@@ -150,8 +152,12 @@ In summary, the difference lies in the positioning of the digit within the strin
 
 **8) Museum_Hours table has 1 invalid entry. Identify it and remove it.**
 ```
-```
+# Identifying invalid entry.
 
+
+# Removing invalid entry.
+```
+***Features and/(or) clauses involved: CTID, a default postgreSQL feature.***
 <br>
 <br>
 
