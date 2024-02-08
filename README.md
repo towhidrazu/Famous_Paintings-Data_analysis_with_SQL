@@ -162,6 +162,7 @@ WHERE CTID NOT IN
 		GROUP BY museum_id, day, open, close)
 
 # Removing invalid entry.
+
 --Solution 1 (Using CTID)
 
 DELETE FROM museum_hours
@@ -172,6 +173,32 @@ WHERE CTID NOT IN
 
 --Solution 2 (Using multi-steps)
 
+--Step 1: Creating a new table as like as existing table with additional column of rank number
+CREATE TABLE museum_hours2 AS(
+	SELECT *, ROW_NUMBER() OVER(PARTITION BY museum_id, day, open, close) rnk
+	FROM museum_hours)
+
+--to check newly created table
+SELECT * FROM museum_hours2
+
+--Step 2: Deleting duplicate entries while keeping 1 entry from each duplicate entry set
+DELETE FROM museum_hours2
+WHERE rnk > 1
+
+--to check newly created table after deletion of duplicate entry
+SELECT * FROM museum_hours2
+
+--Step3: Deleting additionally created rnk column from newly created table
+ALTER TABLE museum_hours2 DROP COLUMN rnk
+
+--Step 4: Drop original table
+DROP TABLE museum_hours
+
+--Step 5: Renaming newly created table as original table
+ALTER TABLE museum_hours2 RENAME TO museum_hours
+
+--to finally check table from where duplicate records have been remobed while keeping 1 entry from each duplicate entry set
+SELECT * FROM museum_hours
 
 ```
 ***Features and/(or) clauses involved: CTID, a default postgreSQL feature.***
