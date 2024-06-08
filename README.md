@@ -28,7 +28,7 @@ Then we will create a database in postgreSQL named 'paintaings' where we will lo
 Now on Visual Studio code we will run the following codes to create 8 new tables with all their data from 8 CSV files under paintaings database.
 
 ```
-import pandas as pandas
+import pandas as pd
 from sqlalchemy import create_engine
 
 conn_string = 'postgresql://postgres:password@localhost/paintings'
